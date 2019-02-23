@@ -32,17 +32,23 @@ def webhook():
 
     # intentの確認
     print('intent')
-    print(data['queryResult']['intent']['displayName'])
+    intent = data['queryResult']['intent']['displayName']
+    print(intent)
 
     # parameterの確認、Entity
     print('entity')
-    print(data['queryResult']['parameters']['building'])
+    entity_building = data['queryResult']['parameters']['building']
+    print(entity_building)
 
     # sender id
     sender_id = data['originalDetectIntentRequest']['payload']['data']['sender']['id']
 
     # send message
-    text = 'dialogflowからメッセージを受け取ったよ'
+    text = 'intent : {}\n' \
+           'entity'.format(
+                intent,
+                entity_building)
+
     send_message(sender_id, text, ACCESS_TOKEN)
 
     return "ok", 200
