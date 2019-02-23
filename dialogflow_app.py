@@ -45,7 +45,7 @@ def webhook():
 
     # send message
     text = 'intent : {}\n' \
-           'entity'.format(
+           'entity : {}'.format(
                 intent,
                 entity_building)
 
